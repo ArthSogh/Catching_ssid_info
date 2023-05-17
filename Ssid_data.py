@@ -1,6 +1,11 @@
 import subprocess
 import time
 
+
+def writing_on_file(new_text):
+
+    with open("Pico_log.txt", mode="a") as myfile: myfile.write(f"{new_text},\n")
+
 def get_ssid_names():
     ssid_names = [0]
     while True:
@@ -16,6 +21,7 @@ def get_ssid_names():
                     # print(ssid)
                     if ssid.startswith('PICO') and ssid != ssid_names[len(ssid_names)-1] and ssid != ssid_names[len(ssid_names)-2]:
                         ssid_names.append(ssid)
+                        writing_on_file(ssid)
                         print(ssid_names)
                         time.sleep(120)
             # return ssid_names
